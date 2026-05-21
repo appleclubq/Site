@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мастер Маникюра | Белокуриха</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-cream: #FAF6F0;
+            --burgundy: #8A1A2D; /* Элегантный бордовый цвет */
+            --text-dark: #2C2C2C;
+            --text-muted: #6E6E6E;
+            --card-border: #4A4A4A;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f0ebf1; /* Внешний фон для десктопа */
+            color: var(--text-dark);
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        /* Оболочка для имитации экрана смартфона на ПК и адаптивности */
+        .phone-wrapper {
+            width: 100%;
+            max-width: 480px;
+            background-color: var(--bg-cream);
+            position: relative;
+            overflow-x: hidden;
+            box-shadow: 0 0 30px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Декоративные цветы в шапке */
+        .top-decor {
+            position: absolute;
+            top: 0;
+            width: 120px;
+            height: auto;
+            pointer-events: none;
+            opacity: 0.8;
+        }
+        .top-left { left: 0; }
+        .top-right { right: 0; }
+
+        /* Шапка */
+        header {
+            padding: 60px 24px 20px 24px;
+            text-align: left;
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 36px;
+            font-weight: 400;
+            color: var(--burgundy);
+            line-height: 1.1;
+            letter-spacing: 0.5px;
+        }
+
+        header .location {
+            font-size: 16px;
+            color: var(--text-dark);
+            margin-top: 8px;
+            font-weight: 400;
+        }
+
+        /* Главный баннер */
+        .main-banner-container {
+            padding: 0 24px;
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .main-banner {
+            width: 100%;
+            height: 220px;
+            border-radius: 24px;
+            overflow: hidden;
+            background-color: #e0e0e0;
+        }
+
+        .main-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Цветок у главного баннера */
+        .banner-decor {
+            position: absolute;
+            left: 8px;
+            bottom: -20px;
+            width: 45px;
+            height: auto;
+            pointer-events: none;
+        }
+
+        /* Раздел "Мои работы" */
+        .portfolio-section {
+            padding: 0 24px 40px 24px;
+        }
+
+        .portfolio-section h2 {
+            font-size: 34px;
+            font-weight: 400;
+            color: var(--burgundy);
+            text-align: center;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .portfolio-section .subtitle {
+            font-size: 14px;
+            color: var(--text-dark);
+            text-align: center;
+            line-height: 1.4;
+            margin-bottom: 24px;
+            font-weight: 300;
+        }
+
+        /* Сетка портфолио в два столбца (эффект шахматки как на макете) */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .portfolio-col {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .work-card {
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            background-color: #e0e0e0;
+        }
+
+        .work-card img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Разные высоты для создания структуры макета */
+        .img-tall { height: 240px; }
+        .img-med { height: 170px; }
+
+        /* Текстовая карточка с обводкой */
+        .work-text-card {
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 20px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            line-height: 1.4;
+            color: var(--text-dark);
+            background-color: var(--bg-cream);
+            min-height: 110px;
+            font-weight: 400;
+        }
+
+        /* Раздел "Почему я" */
+        .why-section {
+            background-color: var(--burgundy);
+            padding: 40px 24px 10px 24px;
+            position: relative;
+        }
+
+        .why-section h2 {
+            color: #FFFFFF;
+            font-size: 32px;
+            font-weight: 400;
+            text-align: center;
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 40px;
+        }
+
+        .why-item {
+            aspect-ratio: 1 / 1;
+            background-color: #e0e0e0;
+            border-radius: 18px;
+            overflow: hidden;
+        }
+
+        .why-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Волнистый переход внизу блока "Почему я" */
+        .wave-divider {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background-color: var(--burgundy);
+        }
+
+        .wave-divider svg {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 40px;
+        }
+
+        /* Раздел "Контакты" */
+        .contacts-section {
+            padding: 60px 24px 50px 24px;
+            background-color: var(--bg-cream);
+            text-align: center;
+        }
+
+        .contacts-section h2 {
+            font-size: 34px;
+            font-weight: 400;
+            color: var(--burgundy);
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+        }
+
+        .contact-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            align-items: center;
+        }
+
+        .btn {
+            width: 100%;
+            max-width: 280px;
+            padding: 14px 20px;
+            border: 1.5px solid var(--burgundy);
+            border-radius: 50px;
+            background: transparent;
+            color: var(--text-dark);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--burgundy);
+            color: #FFFFFF;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="phone-wrapper">
+        
+        <svg class="top-decor top-left" viewBox="0 0 100 100" fill="none" stroke="#8A1A2D" stroke-width="0.5">
+            <path d="M0,0 Q20,40 40,20 T80,40" />
+            <path d="M10,0 Q30,25 20,50" />
+            <circle cx="40" cy="20" r="1" fill="#8A1A2D"/>
+            <circle cx="80" cy="40" r="1.5" fill="#8A1A2D"/>
+        </svg>
+        
+        <svg class="top-decor top-right" viewBox="0 0 100 100" fill="none" stroke="#8A1A2D" stroke-width="0.5">
+            <path d="M100,0 Q80,40 60,20 T20,40" />
+            <circle cx="60" cy="20" r="1.5" fill="#8A1A2D"/>
+            <path d="M70,10 C60,25 80,45 65,55" />
+        </svg>
+
+        <header>
+            <h1>МАСТЕР<br>МАНИКЮРА</h1>
+            <div class="location">г. Белокуриха</div>
+        </header>
+
+        <section class="main-banner-container">
+            <div class="main-banner">
+                <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=600&q=80" alt="Маникюр Белокуриха">
+            </div>
+            <svg class="banner-decor" viewBox="0 0 30 50" fill="none" stroke="#8A1A2D" stroke-width="0.7">
+                <path d="M5,45 Q15,25 10,5" />
+                <path d="M11,35 Q22,30 20,25" />
+                <path d="M9,22 Q2,18 5,12" />
+                <path d="M10,12 Q18,8 14,3" />
+            </svg>
+        </section>
+
+        <section class="portfolio-section">
+            <h2>МОИ РАБОТЫ</h2>
+            <p class="subtitle">Выражают творчество и т.д это просто текст который потом поменяют</p>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-col">
+                    <div class="work-card img-tall">
+                        <img src="https://images.unsplash.com/photo-1632345031435-8797b2d58045?auto=format&fit=crop&w=400&q=80" alt="Работа">
+                    </div>
+                    <div class="work-card img-med">
+                        <img src="https://images.unsplash.com/photo-1607779097040-26e80aa78e66?auto=format&fit=crop&w=400&q=80" alt="Работа">
+                    </div>
+                    <div class="work-text-card">
+                        Индивидуальный подход к каждому клиенту
+                    </div>
+                </div>
+                
+                <div class="portfolio-col">
+                    <div class="work-text-card">
+                        Индивидуальный подход к каждому клиенту
+                    </div>
+                    <div class="work-card img-tall">
+                        <img src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&w=400&q=80" alt="Работа">
+                    </div>
+                    <div class="work-card img-med">
+                        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=80" alt="Работа">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="why-section">
+            <h2>ПОЧЕМУ Я</h2>
+            
+            <div class="why-grid">
+                <div class="why-item">
+                    <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=300&q=80" alt="Стерильность">
+                </div>
+                <div class="why-item">
+                    <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=300&q=80" alt="Палитра">
+                </div>
+                <div class="why-item">
+                    <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=300&q=80" alt="Комфорт">
+                </div>
+                <div class="why-item">
+                    <img src="https://images.unsplash.com/photo-1629113615132-2d1d034dbf2e?auto=format&fit=crop&w=300&q=80" alt="Качество">
+                </div>
+            </div>
+
+            <div class="wave-divider">
+                <svg viewBox="0 0 500 40" preserveAspectRatio="none">
+                    <path d="M0,0 C150,30 350,30 500,0 L500,40 L0,40 Z" fill="#FAF6F0" />
+                </svg>
+            </div>
+        </section>
+
+        <section class="contacts-section">
+            <h2>КОНТАКТЫ</h2>
+            
+            <div class="contact-buttons">
+                <a href="#" class="btn">Telegram</a>
+                <a href="#" class="btn">Max</a>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>
